@@ -7,6 +7,7 @@ import userRouter from "./routes/userRoutes.js";
 import orderRouter from "./routes/orderRoutes.js";
 import cors from 'cors'
 
+dotenv.config()
 
 mongoose.connect(process.env.MONGODB_URI).then(() => {
     console.log('connected to mongodb')
@@ -15,7 +16,6 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
 })
 
 const app = express()
-dotenv.config()
 
 app.use(cors())
 app.use(express.json())
