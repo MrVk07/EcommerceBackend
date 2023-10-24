@@ -9,15 +9,14 @@ orderRouter.post(
     '/',
     isAuth,
     expressAsyncHandler(async (req, res) => {
-        const { body } = req.body
         const newOrder = new Order({
-            orderItems: body.orderItems.map((x) => ({ ...x, product: x._id })),
-            shippingAddress: body.shippingAddress,
-            paymentMethod: body.paymentMethod,
-            itemsPrice: body.itemsPrice,
-            shippingPrice: body.shippingPrice,
-            taxPrice: body.taxPrice,
-            totalPrice: body.totalPrice,
+            orderItems: req.body.orderItems.map((x) => ({ ...x, product: x._id })),
+            shippingAddress: req.body.shippingAddress,
+            paymentMethod: req.body.paymentMethod,
+            itemsPrice: req.body.itemsPrice,
+            shippingPrice: req.body.shippingPrice,
+            taxPrice: req.body.taxPrice,
+            totalPrice: req.body.totalPrice,
             user: req.user._id,
         });
 
