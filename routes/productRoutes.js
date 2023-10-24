@@ -6,6 +6,11 @@ const productRouter = express.Router();
 
 const PAGE_SIZE = 3;
 
+productRouter.get('/', async (req, res) => {
+    const products = await Product.find()
+    res.send(products)
+})
+
 productRouter.get(
     '/search',
     expressAsyncHandler(async (req, res) => {
